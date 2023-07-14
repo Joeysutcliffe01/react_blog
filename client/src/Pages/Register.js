@@ -23,7 +23,7 @@ export const Register = () => {
       setPassword("");
     } else {
       console.log(response);
-      alert("registration failed");
+      alert("registration_failed");
     }
   };
 
