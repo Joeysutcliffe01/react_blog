@@ -4,17 +4,37 @@ import { Nav } from "./Components/Header/Nav";
 import { Route, Routes } from "react-router-dom";
 import { Login } from "./Pages/Login";
 import { Register } from "./Pages/Register";
+import { CreatePost } from "./Pages/CreatePost";
+import { UserContextProvider } from "./Components/UserContext/UserContext";
+import { useState } from "react";
 
 function App() {
+  const [menu, setMenu] = useState(false);
+  const [isLogedIn, setIsLogedIn] = useState(false);
+
   return (
-    <main>
-      <Nav />
-      <Routes>
-        <Route index element={<Home />} />
-        <Route path={"/login"} element={<Login />} />
-        <Route path={"/register"} element={<Register />} />
-      </Routes>
-    </main>
+    <UserContextProvider>
+      <main className={menu ? "main_content fixed" : "main_content"}>
+        <Nav
+          menu={menu}
+          setMenu={setMenu}
+          setIsLogedIn={setIsLogedIn}
+          isLogedIn={isLogedIn}
+        />
+        <Routes>
+          <Route index element={<Home />} />
+          <Route
+            path={"/login"}
+            element={<Login setIsLogedIn={setIsLogedIn} />}
+          />
+          <Route path={"/register"} element={<Register />} />
+          <Route
+            path={"/create_post"}
+            element={<CreatePost setMenu={setMenu} />}
+          />
+        </Routes>
+      </main>
+    </UserContextProvider>
   );
 }
 

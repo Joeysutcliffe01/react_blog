@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
+import { UserContext } from "../Components/UserContext/UserContext";
 
-export const Login = () => {
+export const Login = ({ setIsLogedIn }) => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [redirect, setRedirect] = useState(false);
   const [badCredentials, setBadCredentials] = useState(false);
+  const { setUserInfo } = useContext(UserContext);
 
   const login = async (e) => {
     e.preventDefault();
@@ -17,10 +19,14 @@ export const Login = () => {
       credentials: "include",
     });
 
-    console.log("---------------response", response);
+    // console.log("---------------response", response);
 
     if (response.ok) {
-      setRedirect(true);
+      response.json().then((userInfo) => {
+        setUserInfo(userInfo);
+        setRedirect(true);
+        setIsLogedIn(true);
+      });
     } else {
       setBadCredentials(true);
     }

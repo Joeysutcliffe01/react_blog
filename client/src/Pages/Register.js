@@ -17,12 +17,12 @@ export const Register = () => {
     console.log("response--------", response);
 
     if (response.status === 200) {
-      alert("registration successful");
+      // alert("registration successful");
       setSuccessfulReg(true);
       setUsername("");
       setPassword("");
     } else {
-      console.log(response);
+      console.log("response-----", response);
       alert("registration_failed");
     }
   };
