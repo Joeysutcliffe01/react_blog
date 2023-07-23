@@ -1,0 +1,55 @@
+.posts {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+    margin: 4rem 0;
+    /* border: 2px solid rgb(64, 0, 255); */
+}
+
+.post_section img {
+    width: 100%;
+    /* border: 2px solid rgb(55, 255, 0); */
+}
+
+.posts_info {
+    width: 100%;
+    /* border: 2px solid rgb(229, 255, 0); */
+}
+
+.post_auther_info_name,
+.post_auther_info_date {
+    color: rgb(155, 172, 172);
+    /* border: 2px solid rgb(255, 47, 0); */
+}
+
+.post_auther_info_name {
+    font-weight: 500;
+    margin-right: .5rem;
+    /* border: 2px solid rgb(255, 0, 247); */
+}
+
+.post_auther_info_date {
+    font-weight: 450;
+    font-size: .9rem;
+    /* border: 2px solid rgb(0, 234, 255); */
+}
+
+@media (min-width: 800px) {
+    .posts {
+        flex-direction: row;
+        width: 100%;
+        margin: 4rem 0;
+        /* border: 2px solid rgb(64, 0, 255); */
+    }
+
+    .post_section img {
+        width: 50%;
+        /* border: 2px solid rgb(55, 255, 0); */
+    }
+
+    .posts_info {
+        width: 40%;
+        /* border: 2px solid rgb(229, 255, 0); */
+    }
+}

@@ -1,21 +1,26 @@
 const express = require("express");
 const cors = require("cors");
+const Post = require("./Models/Post");
 const User = require("./Models/User");
 const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const cookieParser = require("cookie-parser");
+const multer = require("multer");
+const fs = require("fs");
 
 require("dotenv").config();
 
 const app = express();
 const salt = bcrypt.genSaltSync(10);
 const secret = process.env.SERCRETCODE;
+const uploadMiddelWare = multer({ dest: "uploads/" });
 
 // Need to come back to origin: "http://localhost:3000"
 app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
 app.use(express.json());
 app.use(cookieParser());
+app.use("/uploads", express.static(__dirname + "/uploads"));
 
 mongoose.connect(process.env.CONNECT);
 
@@ -65,12 +70,9 @@ app.get(
   (req, res) => {
     const { token } = req.cookies;
 
-    console.log("req.cookies-----", req.cookies);
-
     jwt.verify(token, secret, {}, (err, info) => {
       if (err) throw err;
 
-      console.log("info----------", info);
       res.json(info);
     });
 
@@ -78,6 +80,40 @@ app.get(
   },
   []
 );
+
+// -------------------------------------------------------------   create a new blog post
+app.post("/create_post", uploadMiddelWare.single("file"), async (req, res) => {
+  const { token } = req.cookies;
+  const { originalname, path } = req.file;
+  const { title, summary, content } = await req.body;
+  const parts = originalname.split(".");
+  const ext = parts[parts.length - 1];
+  const newPath = path + "." + ext;
+
+  fs.renameSync(path, newPath);
+
+  jwt.verify(token, secret, {}, async (err, info) => {
+    if (err) throw err;
+
+    const postDoc = await Post.create({
+      title,
+      summary,
+      content,
+      cover: newPath,
+      author: info.id,
+    });
+    res.json(postDoc);
+  });
+});
+
+app.get("/post", async (req, res) => {
+  const posts = await Post.find()
+    .populate("author", ["username"])
+    .sort({ createdAt: -1 })
+    .limit(10);
+
+  res.json(posts);
+});
 
 // -------------------------------------------------------------  logout user
 app.post("/logout", (req, res) => {

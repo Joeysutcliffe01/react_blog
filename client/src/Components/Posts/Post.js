@@ -1,22 +1,27 @@
-import React from "react";
+import { format } from "date-fns";
 
-export function Posts() {
+export function Posts({ title, summary, createdAt, cover, content, author }) {
+  // console.log("title", title, "summary", summary);
+
+  // console.log("author.username----------", author.username);
   return (
     <>
       <section className="post_section">
         {/* ---------------------------------- post 1*/}
         <div className="posts">
-          <img
-            src="https://th.bing.com/th/id/OIP.vaiC1vy9F2iPeOXuMKrMRgHaD2?pid=ImgDet&rs=1"
-            alt="react post"
-          />
+          <img src={"http://localhost:4000/" + cover} alt="react post" />
           <div className="posts_info">
-            <h2>
-              React Canaries: Enabling Incremental Feature Rollout Outside Meta
-            </h2>
+            <h2>{title}</h2>
             <a href="/" className="post_auther_info_link">
-              <span className="post_auther_info_name">Joseph Sutcliffe</span>
-              <time className="post_auther_info_date">2023-01-06 10:55</time>
+              <span className="post_auther_info_name">
+                {author &&
+                  "@" +
+                    author.username.charAt(0).toUpperCase() +
+                    author.username.slice(1)}
+              </span>
+              <time className="post_auther_info_date">
+                {format(new Date(createdAt), "MMM d yyyy, HH:MM")}
+              </time>
             </a>
             <p>
               We'd like to offer the React community an option to adopt
@@ -27,48 +32,6 @@ export function Posts() {
         </div>
 
         {/* ---------------------------------- post 2*/}
-        <div className="posts">
-          <img
-            src="https://teknotrait.com/wp-content/uploads/2016/07/1_S6RrPKnVyVoRpDmkALHWpg-1024x648.png"
-            alt="react post"
-          />
-          <div className="posts_info">
-            <h2>
-              React Canaries: Enabling Incremental Feature Rollout Outside Meta
-            </h2>
-            <a href="/" className="post_auther_info_link">
-              <span className="post_auther_info_name">Joseph Sutcliffe</span>
-              <time className="post_auther_info_date">2023-01-06 10:55</time>
-            </a>
-            <p>
-              We'd like to offer the React community an option to adopt
-              individual new features as soon as their design is close to final,
-              before they're released in a stable
-            </p>
-          </div>
-        </div>
-
-        {/* ---------------------------------- post 3*/}
-        <div className="posts">
-          <img
-            src="https://s3.ap-southeast-1.amazonaws.com/arrowhitech.com/wp-content/uploads/2021/08/22102526/React-1.png"
-            alt="react post"
-          />
-          <div className="posts_info">
-            <h2>
-              React Canaries: Enabling Incremental Feature Rollout Outside Meta
-            </h2>
-            <a href="/" className="post_auther_info_link">
-              <span className="post_auther_info_name">Joseph Sutcliffe</span>
-              <time className="post_auther_info_date">2023-01-06 10:55</time>
-            </a>
-            <p>
-              We'd like to offer the React community an option to adopt
-              individual new features as soon as their design is close to final,
-              before they're released in a stable
-            </p>
-          </div>
-        </div>
       </section>
     </>
   );

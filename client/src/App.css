@@ -1,13 +1,19 @@
 @import "Components/Header/nav.css";
+@import "Components/Posts/post.css";
+@import "Pages/Login/login.css";
 
 .display_none {
   display: none;
 }
 
 .main_content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
   /* width: 90%; */
   /* position: fixed; */
-  min-height: 100vh;
+  min-height: 99.5vh;
   margin: 0 auto;
   /* overflow: hidden; */
   padding: 0 3rem;
@@ -33,33 +39,3 @@ body {
 
 
 /* ----------------------------------- post_section */
-.posts {
-  display: flex;
-  justify-content: space-between;
-  margin: 4rem 0;
-  /* border: 2px solid rgb(64, 0, 255); */
-}
-
-.post_section img {
-  width: 45%;
-}
-
-.post_auther_info_name {
-  font-weight: 500;
-  margin-right: .5rem;
-}
-
-.post_auther_info_name {
-  font-weight: 500;
-  margin-right: .5rem;
-}
-
-.post_auther_info_date {
-  font-weight: 500;
-  font-size: .9rem;
-  color: rgb(178, 189, 189);
-}
-
-.posts_info {
-  width: 45%;
-}
