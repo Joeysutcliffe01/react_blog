@@ -1,37 +1,8 @@
 import { useContext, useState } from "react";
-import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Navigate } from "react-router-dom";
 import { UserContext } from "../Components/UserContext/UserContext";
-
-const modules = {
-  toolbar: [
-    [{ header: [1, 2, false] }],
-    ["bold", "italic", "underline", "strike", "blockquote"],
-    [
-      { list: "ordered" },
-      { list: "bullet" },
-      { indent: "-1" },
-      { indent: "+1" },
-    ],
-    ["link", "image"],
-    ["clean"],
-  ],
-};
-
-const formats = [
-  "header",
-  "bold",
-  "italic",
-  "underline",
-  "strike",
-  "blockquote",
-  "list",
-  "bullet",
-  "indent",
-  "link",
-  "image",
-];
+import { Editor } from "../Components/Editor";
 
 export const CreatePost = () => {
   const [redirect, setRedirect] = useState(false);
@@ -42,15 +13,6 @@ export const CreatePost = () => {
   const { setUserInfo, userInfo } = useContext(UserContext);
 
   const userName = userInfo?.username;
-
-  // const createPost = () => {
-  //   const data = new FormData();
-
-  //   data.set("title", title);
-  //   data.set("summary", summary);
-  //   data.set("content", content);
-  //   // data.set("file", )
-  // };
 
   const createNewPost = async (e) => {
     e.preventDefault();
@@ -67,8 +29,6 @@ export const CreatePost = () => {
       credentials: "include",
     });
 
-    // console.log("response---------", response);
-
     if (response.ok) {
       setRedirect(true);
     }
@@ -76,7 +36,10 @@ export const CreatePost = () => {
 
   // console.log("!!!!!!!!!!!userInfo---------", userInfo);
 
-  if (redirect || !userName) {
+  // if (redirect || !userName) {
+  //   return <Navigate to={"/"} />;
+  // }
+  if (redirect) {
     return <Navigate to={"/"} />;
   }
 
@@ -99,12 +62,7 @@ export const CreatePost = () => {
         // value={files}
         onChange={(e) => setFiles(e.target.files)}
       />
-      <ReactQuill
-        value={content}
-        modules={modules}
-        formats={formats}
-        onChange={(e) => setContent(e)}
-      />
+      <Editor value={content} onChange={setContent} />
       <button>Submit Blog</button>
     </form>
   );

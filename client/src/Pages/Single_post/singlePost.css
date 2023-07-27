@@ -2,12 +2,28 @@
     width: 100%;
     height: 30%;
     margin-top: 5rem;
-    border: 2px solid red;
+    position: relative;
+    /* border: 2px solid red; */
 }
 
-.single_post_hero img {
+.single_post_cover_img {
     object-fit: cover;
     width: 100%;
     /* height: 40vw; */
-    border: 2px solid rgb(0, 38, 255);
+    /* border: 2px solid rgb(0, 38, 255); */
+}
+
+.single_post_edit_btn {
+    padding: 2rem;
+    width: 2rem;
+    cursor: pointer;
+    /* position: absolute;
+    top: 7rem;
+    right: 1rem; */
+    transition: all .3s ease-in-out;
+
+}
+
+.single_post_edit_btn:hover {
+    transform: rotate3d(1, 1, 1, 45deg);
 }

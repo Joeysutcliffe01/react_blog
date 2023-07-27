@@ -1,7 +1,8 @@
 import { format } from "date-fns";
 import { useContext, useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { UserContext } from "../../Components/UserContext/UserContext";
+import pencil from "../../Assets/Icons/icons8-pencil-480.png";
 
 export const SinglePost = () => {
   const [postInfo, setPostInfo] = useState(null);
@@ -26,11 +27,26 @@ export const SinglePost = () => {
 
   if (!postInfo) return "";
 
+  console.log("postInfo----------------", postInfo._id);
+
   return (
     <section className="single_post_section">
       <div className="single_post_hero">
-        <img src={`http://localhost:4000/${postInfo.cover}`} alt="cover" />
-        {userInfo.id === postInfo.author._id && <h2>Edit</h2>}
+        <img
+          className="single_post_cover_img"
+          src={`http://localhost:4000/${postInfo.cover}`}
+          alt="cover"
+        />
+        {userInfo.id === postInfo.author._id && (
+          <Link to={`/edit/${postInfo._id}`}>
+            {" "}
+            <img
+              className="single_post_edit_btn"
+              src={pencil}
+              alt="pencil icon"
+            />
+          </Link>
+        )}
         <h3>{"@" + postInfo.author.username}</h3>
         <time className="">
           {format(new Date(postInfo.createdAt), "MMM d yyyy, HH:MM")}
