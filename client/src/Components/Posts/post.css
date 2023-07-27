@@ -1,9 +1,16 @@
+.post_section a {
+    color: rgb(57, 60, 62);
+    text-decoration: none;
+    /* border: 2px solid rgb(64, 0, 255); */
+}
+
 .posts {
     display: flex;
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
     margin: 4rem 0;
+    text-decoration: none;
     /* border: 2px solid rgb(64, 0, 255); */
 }
 
@@ -40,6 +47,7 @@
         flex-direction: row;
         width: 100%;
         margin: 4rem 0;
+        text-decoration: none;
         /* border: 2px solid rgb(64, 0, 255); */
     }
 
@@ -50,6 +58,7 @@
 
     .posts_info {
         width: 40%;
+
         /* border: 2px solid rgb(229, 255, 0); */
     }
 }

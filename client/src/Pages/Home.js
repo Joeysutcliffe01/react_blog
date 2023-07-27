@@ -12,12 +12,15 @@ export const Home = () => {
     });
   }, []);
 
-  console.log("posts_", posts);
+  // console.log("posts_", posts && posts[0]._id);
   return (
     <>
       {posts.length > 0 &&
-        posts.map((post) => {
-          return <Posts {...post} />;
+        posts.map((post, i) => {
+
+          return (
+            <Posts {...post} key={i + Math.floor(Math.random() * 100000)} />
+          );
         })}
     </>
   );

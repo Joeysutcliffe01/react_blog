@@ -1,7 +1,8 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import { Navigate } from "react-router-dom";
+import { UserContext } from "../Components/UserContext/UserContext";
 
 const modules = {
   toolbar: [
@@ -38,6 +39,9 @@ export const CreatePost = () => {
   const [summary, setSummary] = useState("");
   const [content, setContent] = useState("");
   const [files, setFiles] = useState("");
+  const { setUserInfo, userInfo } = useContext(UserContext);
+
+  const userName = userInfo?.username;
 
   // const createPost = () => {
   //   const data = new FormData();
@@ -63,16 +67,16 @@ export const CreatePost = () => {
       credentials: "include",
     });
 
-    console.log("response---------", response);
+    // console.log("response---------", response);
 
     if (response.ok) {
       setRedirect(true);
     }
   };
 
-  console.log("redirect---------", redirect);
+  // console.log("!!!!!!!!!!!userInfo---------", userInfo);
 
-  if (redirect) {
+  if (redirect || !userName) {
     return <Navigate to={"/"} />;
   }
 

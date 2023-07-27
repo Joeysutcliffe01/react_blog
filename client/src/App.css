@@ -1,9 +1,11 @@
 @import "Components/Header/nav.css";
 @import "Components/Posts/post.css";
 @import "Pages/Login/login.css";
+@import "Pages/Single_post/singlePost.css";
 
 .display_none {
   display: none;
+  transition: all .3s ease-in-out;
 }
 
 .main_content {
@@ -16,9 +18,10 @@
   min-height: 99.5vh;
   margin: 0 auto;
   /* overflow: hidden; */
-  padding: 0 3rem;
+  padding: 3rem 3rem 0rem 3rem;
   overflow-y: hidden;
   overflow-x: hidden;
+  background-color: rgba(236, 238, 250, 0.699);
   /* border: 2px solid rgb(43, 255, 0); */
 }
 

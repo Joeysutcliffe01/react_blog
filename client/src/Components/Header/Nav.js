@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, Navigate } from "react-router-dom";
 import { UserContext } from "../UserContext/UserContext";
+import userIcon from "../../Assets/Nav/user_icon.png";
 
 export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
   const { setUserInfo, userInfo } = useContext(UserContext);
@@ -19,12 +20,7 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
     });
 
     setRedirect(false);
-    if (userInfo?.username) {
-      setIsLogedIn(true);
-    } else {
-      setIsLogedIn(false);
-    }
-  }, [isLogedIn]);
+  }, []);
 
   console.log("setUserInfo-----------------------", userInfo);
 
@@ -42,7 +38,6 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
     setUserInfo(null);
     setMenu(false);
     setIsLogedIn(false);
-    setRedirect(true);
   };
 
   // console.log("userInfo----------", userInfo);
@@ -71,18 +66,22 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
         )}
         {isLogedIn && (
           <>
-            <h2
+            <img
+              src={userIcon}
+              alt="logedin user"
               className={menu ? "display_none" : "user_img"}
               onClick={handelMenu}
-            >
-              🙂
-            </h2>
+            />
             <div className={menu ? "menu" : "menu_closed"}>
               <button onClick={handelMenu} className="menu_btn">
                 {menu ? "X" : "-"}
               </button>
               <div className=" menu_user_info">
-                <h2 className="menu_user_info_img">🙂</h2>
+                <img
+                  src={userIcon}
+                  alt="logedin user icon"
+                  className="menu_user_info_img"
+                />
                 <h3 className="menu_user_info_h3"> {userInfo.username}</h3>
               </div>
 

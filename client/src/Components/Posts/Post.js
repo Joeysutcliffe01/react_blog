@@ -1,6 +1,15 @@
 import { format } from "date-fns";
+import { Link } from "react-router-dom";
 
-export function Posts({ title, summary, createdAt, cover, content, author }) {
+export function Posts({
+  _id,
+  title,
+  summary,
+  createdAt,
+  cover,
+  content,
+  author,
+}) {
   // console.log("title", title, "summary", summary);
 
   // console.log("author.username----------", author.username);
@@ -8,11 +17,12 @@ export function Posts({ title, summary, createdAt, cover, content, author }) {
     <>
       <section className="post_section">
         {/* ---------------------------------- post 1*/}
-        <div className="posts">
-          <img src={"http://localhost:4000/" + cover} alt="react post" />
-          <div className="posts_info">
-            <h2>{title}</h2>
-            <a href="/" className="post_auther_info_link">
+        <Link to={`/post/${_id}`}>
+          <div className="posts">
+            <img src={"http://localhost:4000/" + cover} alt="react post" />
+            <div className="posts_info">
+              <h2>{title}</h2>
+
               <span className="post_auther_info_name">
                 {author &&
                   "@" +
@@ -22,14 +32,15 @@ export function Posts({ title, summary, createdAt, cover, content, author }) {
               <time className="post_auther_info_date">
                 {format(new Date(createdAt), "MMM d yyyy, HH:MM")}
               </time>
-            </a>
-            <p>
-              We'd like to offer the React community an option to adopt
-              individual new features as soon as their design is close to final,
-              before they're released in a stable
-            </p>
+
+              <p>
+                We'd like to offer the React community an option to adopt
+                individual new features as soon as their design is close to
+                final, before they're released in a stable
+              </p>
+            </div>
           </div>
-        </div>
+        </Link>
 
         {/* ---------------------------------- post 2*/}
       </section>

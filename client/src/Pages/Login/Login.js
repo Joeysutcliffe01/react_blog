@@ -37,7 +37,7 @@ export const Login = ({ setIsLogedIn, setHideNavBar }) => {
     return <Navigate to={"/"} />;
   }
 
-  console.log("badCredentials-----------", badCredentials);
+  // console.log("badCredentials-----------", badCredentials);
   // setHideNavBar(true);
 
   return (
