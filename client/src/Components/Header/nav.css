@@ -1,24 +1,23 @@
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
 
 .header {
-    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
     position: absolute;
     top: 0rem;
-    padding: .8rem 0;
-    box-shadow: rgba(17, 17, 26, 0.1) 0px 1px 0px;
-    /* border-bottom: 2px solid rgba(131, 129, 129, 0.304);*/
-    border-radius: 0 0 .8rem .8rem;
-    background-color: rgb(255, 255, 255);
-    /* border: 2px solid rgb(0, 225, 255); */
+    padding: .5rem 0;
+    z-index: 2;
+    background-color: rgba(255, 255, 255, 0);
 }
 
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 0 3.5rem;
+    width: 90%;
     height: 4.5rem;
-    /* width: 100%; */
     /* border: 2px solid red; */
 }
 
@@ -37,6 +36,7 @@ nav a:hover {
     font-size: 2rem;
     font-family: 'VT323', monospace;
     transition: all .2s ease-in-out;
+    /* border: 2px solid rgb(13, 255, 0); */
 }
 
 nav ul {
@@ -47,6 +47,26 @@ nav ul {
 
 nav ul li {
     list-style: none;
+    font-weight: 600;
+}
+
+.nav_register,
+.nav_login:hover {
+    padding: .5rem 1rem;
+    border-radius: .7rem;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+    color: white;
+    border: 2px solid rgb(255, 255, 255);
+}
+
+.nav_login,
+.nav_register:hover {
+    border-radius: .7rem;
+    padding: .5rem 1rem;
+    transition: all .3s ease-in-out;
+    color: white;
+    border: 2px solid rgba(111, 109, 109, 0);
 }
 
 .menu {
@@ -67,12 +87,13 @@ nav ul li {
     width: 15rem;
     min-height: 100vh;
     border-radius: 2rem 0 0 3rem;
-    background-color: white;
+    background-color: rgb(255, 255, 255);
     padding: .8rem 1rem;
     position: absolute;
     top: -.5rem;
     transition: all .3s ease-in-out;
     box-shadow: rgb(204, 219, 232) 3px 3px 6px 0px inset, rgba(255, 255, 255, 0.5) -3px -3px 6px 1px inset;
+    border-color: rgba(240, 248, 255, 0);
     /* border: 2px solid rgb(0, 255, 247); */
 }
 
@@ -121,7 +142,6 @@ nav ul li {
     color: rgb(87, 87, 88);
     background-color: rgb(249, 247, 247);
     font-size: 1.01rem;
-    /* transform: scale(1.1); */
     /* border: 2px solid rgb(87, 87, 88); */
 }
 

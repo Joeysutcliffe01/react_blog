@@ -1,14 +1,9 @@
 import "./App.css";
-import { Home } from "./Pages/Home";
 import { Nav } from "./Components/Header/Nav";
-import { Route, Routes } from "react-router-dom";
-import { Login } from "./Pages/Login/Login";
-import { Register } from "./Pages/Register";
-import { CreatePost } from "./Pages/CreatePost";
-import { EditPost } from "./Pages/EditPost/EditPost";
+import { RoutesPage } from "./Pages/Routes/RoutesPage";
 import { UserContextProvider } from "./Components/UserContext/UserContext";
 import { useEffect, useState } from "react";
-import { SinglePost } from "./Pages/Single_post/SinglePost";
+import { Footer } from "./Components/Footer/Footer";
 
 const isLogedInFromLocalStorage =
   window.localStorage.getItem("isLogedIn_localStorage") || true;
@@ -32,20 +27,8 @@ function App() {
           setIsLogedIn={setIsLogedIn}
           isLogedIn={isLogedIn}
         />
-        <Routes>
-          <Route index element={<Home />} />
-          <Route
-            path={"/login"}
-            element={<Login setIsLogedIn={setIsLogedIn} />}
-          />
-          <Route path={"/register"} element={<Register />} />
-          <Route
-            path={"/create_post"}
-            element={<CreatePost setMenu={setMenu} />}
-          />
-          <Route path={"/post/:id"} element={<SinglePost />} />
-          <Route path={"/edit/:id"} element={<EditPost />} />
-        </Routes>
+        <RoutesPage setIsLogedIn={setIsLogedIn} setMenu={setMenu} />
+        {/* <Footer /> */}
       </main>
     </UserContextProvider>
   );

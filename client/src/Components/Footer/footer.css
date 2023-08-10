@@ -1,0 +1,25 @@
+.footer_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 40rem;
+    position: relative;
+    overflow: hidden;
+    /* border: 2px solid red; */
+}
+
+.footer_section_bg {
+    /* position: absolute;
+    bottom: -150rem;
+    left: -20rem; */
+    position: "fixed";
+    left: 0;
+    bottom: 0;
+    right: 0;
+    width: 170rem;
+    margin-bottom: -150rem;
+    /* height: 50rem; */
+    transform: rotate(125deg);
+    /* border: 2px solid red; */
+}

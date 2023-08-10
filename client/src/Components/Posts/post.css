@@ -1,3 +1,31 @@
+.textoverflow {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.posts_container {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 4rem;
+    width: 90%;
+    padding: 5rem 0 0 0;
+    margin-bottom: 3rem;
+    /* border: 2px solid rgb(94, 255, 0); */
+}
+
+.post_section {
+    display: flex;
+    flex-direction: row;
+    width: 25rem;
+    height: 40rem;
+    border-radius: 1rem;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    /* border: 3px solid rgb(219, 217, 217); */
+}
+
+
 .post_section a {
     color: rgb(57, 60, 62);
     text-decoration: none;
@@ -9,18 +37,36 @@
     justify-content: space-between;
     flex-direction: column;
     width: 100%;
-    margin: 4rem 0;
     text-decoration: none;
-    /* border: 2px solid rgb(64, 0, 255); */
+    overflow: hidden;
+    text-overflow: ellipsis;
+    /* padding-bottom: 1rem; */
+
+    /* border: 2px solid rgb(255, 0, 0); */
 }
 
 .post_section img {
+    margin: 0 auto;
     width: 100%;
-    /* border: 2px solid rgb(55, 255, 0); */
+    height: 20rem;
+    border-radius: .8rem .8rem 0 0;
+    /* height: 50%; */
+    /* border: 2px solid rgb(0, 247, 255); */
 }
 
 .posts_info {
-    width: 100%;
+    padding: 1rem;
+    /* border: 2px solid rgb(229, 255, 0); */
+}
+
+.posts_info_h2 {
+    /* border: 2px solid rgb(229, 255, 0); */
+}
+
+.post_auther_info_summary {
+    height: 10.5rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
     /* border: 2px solid rgb(229, 255, 0); */
 }
 
@@ -42,23 +88,18 @@
     /* border: 2px solid rgb(0, 234, 255); */
 }
 
-@media (min-width: 800px) {
+/* @media (min-width: 800px) {
     .posts {
         flex-direction: row;
-        width: 100%;
         margin: 4rem 0;
         text-decoration: none;
-        /* border: 2px solid rgb(64, 0, 255); */
     }
 
     .post_section img {
-        width: 50%;
-        /* border: 2px solid rgb(55, 255, 0); */
+        width: 100%;
     }
 
     .posts_info {
-        width: 40%;
-
-        /* border: 2px solid rgb(229, 255, 0); */
+        width: 100%;
     }
-}
+} */

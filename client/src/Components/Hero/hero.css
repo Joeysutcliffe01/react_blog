@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.hero_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row-reverse;
+    text-align: center;
+    width: 100%;
+    height: 80vh;
+    padding-top: 2rem;
+    margin-bottom: 10rem;
+    background-color: white;
+    position: relative;
+}
+
+/* .hero_blob_1 {
+    width: 100vw;
+    height: 100%;
+    position: absolute;
+    top: -5rem;
+    right: 0%;
+    z-index: -1;
+
+} */
+
+.hero_blob_4 {
+    width: 50vw;
+    /* height: 50vw; */
+    position: absolute;
+    top: -12vw;
+    right: -13vw;
+    z-index: 2;
+
+}
+
+.hero_blob_1 {
+    width: 30vw;
+    /* height: 50vw; */
+    position: absolute;
+    top: 20vw;
+    left: -19vw;
+    transform: rotate(-90deg);
+    z-index: 2;
+
+}
+
+.hero_info_container {
+    margin-left: 7rem;
+    width: 45%;
+    margin-top: -6rem;
+}
+
+.hero_heading {
+    font-size: 2rem;
+}
+
+.hero_p {
+    font-size: 1.2rem;
+}
+
+.hero_heading span,
+.hero_p span {
+    font-family: 'VT323', monospace;
+}
+
+.hero_anmation {
+    margin-left: 7rem;
+    width: 40%;
+    z-index: 4;
+    /* border: 2px solid red; */
+}

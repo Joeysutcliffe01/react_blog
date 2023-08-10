@@ -1,5 +1,6 @@
 import React from "react";
 import ReactQuill from "react-quill";
+import "react-quill/dist/quill.snow.css";
 
 const modules = {
   toolbar: [
@@ -32,11 +33,20 @@ const formats = [
 
 export const Editor = ({ value, onChange }) => {
   return (
-    <ReactQuill
-      value={value}
-      modules={modules}
-      formats={formats}
-      onChange={onChange}
-    />
+    <>
+      <ReactQuill
+        value={value}
+        modules={modules}
+        formats={formats}
+        onChange={onChange}
+        style={{
+          width: "92%",
+          borderRadius: "1rem",
+          backgroundColor: "white",
+          overflow: "hidden",
+          // border: "3px solid rgb(231, 231, 231)",
+        }}
+      />
+    </>
   );
 };

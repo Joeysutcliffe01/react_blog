@@ -1,11 +1,20 @@
 @import "Components/Header/nav.css";
 @import "Components/Posts/post.css";
-@import "Pages/Login/login.css";
+@import "Components/Hero/hero.css";
+@import "Components/Footer/footer.css";
+@import "Pages/LoginAndRegister/login_and_register.css";
 @import "Pages/Single_post/singlePost.css";
+@import "Pages/CreatePost/createPost.css";
+@import "Pages/Home/home.css";
+@import "Pages/EditPost/editPost.css";
 
-.display_none {
-  display: none;
-  transition: all .3s ease-in-out;
+/* ----------------------------------- Global */
+
+body {
+  scrollbar-gutter: stable;
+  overflow-x: hidden;
+  min-height: 99.5vh;
+  /* border: 2px solid red; */
 }
 
 .main_content {
@@ -13,32 +22,29 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  /* width: 90%; */
-  /* position: fixed; */
-  min-height: 99.5vh;
   margin: 0 auto;
-  /* overflow: hidden; */
-  padding: 3rem 3rem 0rem 3rem;
-  overflow-y: hidden;
   overflow-x: hidden;
-  background-color: rgba(236, 238, 250, 0.699);
-  /* border: 2px solid rgb(43, 255, 0); */
+  /* border: 2px solid red; */
 }
 
 .fixed {
   position: fixed;
-  scrollbar-gutter: stable;
+  top: 0;
+  left: 0;
+  right: .9rem;
 }
 
-
-body {
-  position: relative;
-  margin: 0 auto;
-  /* border: 2px solid rgb(64, 0, 255); */
-  overflow-x: hidden;
+.display_none {
+  display: none;
+  transition: all .3s ease-in-out;
 }
 
-/* ----------------------------------- header_section */
-
-
-/* ----------------------------------- post_section */
+.section_blob_top {
+  width: 33%;
+  position: absolute;
+  top: -12vw;
+  right: -17vw;
+  transform: rotate(365deg);
+  z-index: -1;
+  /* border: 2px solid red; */
+}

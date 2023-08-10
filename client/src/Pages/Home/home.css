@@ -1,0 +1,17 @@
+.home_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 1;
+}
+
+.blob_empty {
+    /* position: absolute;
+    left: 1rem;
+    bottom: 2rem; */
+    width: 20rem;
+    height: 20rem;
+    border: 2px solid red;
+    /* z-index: 12; */
+}

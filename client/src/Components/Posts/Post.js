@@ -1,5 +1,6 @@
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export function Posts({
   _id,
@@ -10,18 +11,23 @@ export function Posts({
   content,
   author,
 }) {
-  // console.log("title", title, "summary", summary);
-
-  // console.log("author.username----------", author.username);
   return (
     <>
-      <section className="post_section">
+      <motion.section
+        className="post_section"
+        // initial={{ opacity: 0 }}
+        // animate={{
+        //   opacity: 1,
+        //   transition: { duration: 1 },
+        // }}
+        // exit={{ opacity: 0 }}
+      >
         {/* ---------------------------------- post 1*/}
-        <Link to={`/post/${_id}`}>
-          <div className="posts">
+        <div className="posts">
+          <Link to={`/post/${_id}`}>
             <img src={"http://localhost:4000/" + cover} alt="react post" />
             <div className="posts_info">
-              <h2>{title}</h2>
+              <h2 className="posts_info_h2 textoverflow">{title}</h2>
 
               <span className="post_auther_info_name">
                 {author &&
@@ -33,17 +39,13 @@ export function Posts({
                 {format(new Date(createdAt), "MMM d yyyy, HH:MM")}
               </time>
 
-              <p>
-                We'd like to offer the React community an option to adopt
-                individual new features as soon as their design is close to
-                final, before they're released in a stable
-              </p>
+              <p className="post_auther_info_summary ">{summary}</p>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
 
         {/* ---------------------------------- post 2*/}
-      </section>
+      </motion.section>
     </>
   );
 }

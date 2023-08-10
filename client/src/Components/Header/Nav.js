@@ -1,14 +1,24 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate, useLocation, useParams } from "react-router-dom";
 import { UserContext } from "../UserContext/UserContext";
 import userIcon from "../../Assets/Nav/user_icon.png";
+
+const logedInUserInfo = window.localStorage.getItem("logedInUserInfo") || true;
 
 export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
   const { setUserInfo, userInfo } = useContext(UserContext);
   const [redirect, setRedirect] = useState(false);
-  const username = userInfo?.username;
+  const [userInfoLocal, setUserInfoLocal] = useState(
+    JSON.parse(logedInUserInfo)
+  );
 
-  console.log("userInfo--------", userInfo);
+  const username = userInfo?.username;
+  const { pathname } = useLocation();
+
+  console.log("userInfoLocal.......---------------.........", userInfoLocal);
+  // const url = window.location.pathname;
+
+  // console.log("url--------", url);
 
   useEffect(() => {
     fetch("http://localhost:4000/profile", {
@@ -16,13 +26,18 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
     }).then((res) => {
       res.json().then((userInfo) => {
         setUserInfo(userInfo.username);
+        console.log("UserInfo-----", userInfo);
+        setUserInfoLocal(userInfo.username);
       });
     });
-
     setRedirect(false);
   }, []);
 
-  console.log("setUserInfo-----------------------", userInfo);
+  useEffect(() => {
+    localStorage.setItem("logedInUserInfo", JSON.stringify(userInfoLocal));
+  }, [isLogedIn]);
+
+  // console.log("setUserInfo-----------------------", userInfo);
 
   const handelMenu = () => {
     setMenu((prev) => !prev);
@@ -38,6 +53,7 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
     setUserInfo(null);
     setMenu(false);
     setIsLogedIn(false);
+    // setRedirect(true);
   };
 
   // console.log("userInfo----------", userInfo);
@@ -47,6 +63,8 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
   if (redirect) {
     return <Navigate to={"/"} />;
   }
+  if (pathname.includes("login")) return;
+  if (pathname.includes("register")) return;
 
   return (
     <header className={hideNavBar ? "display_none" : "header"}>
@@ -56,12 +74,13 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
         </Link>
         {!isLogedIn && (
           <ul>
-            <li>
-              <Link to="/login">Login</Link>
-            </li>
-            <li>
-              <Link to="/register">Register</Link>
-            </li>
+            <Link to="/login">
+              <li className="nav_login">Login</li>
+            </Link>
+
+            <Link to="/register">
+              <li className="nav_register">Sign up</li>
+            </Link>
           </ul>
         )}
         {isLogedIn && (
@@ -69,7 +88,7 @@ export const Nav = ({ menu, setMenu, setIsLogedIn, isLogedIn, hideNavBar }) => {
             <img
               src={userIcon}
               alt="logedin user"
-              className={menu ? "display_none" : "user_img"}
+              className={"user_img"}
               onClick={handelMenu}
             />
             <div className={menu ? "menu" : "menu_closed"}>

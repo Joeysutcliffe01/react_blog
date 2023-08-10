@@ -1,0 +1,15 @@
+div.ql-container.ql-snow {
+    border-radius: 0rem 0rem 1rem 1rem;
+    min-height: 10rem;
+    border: 2px solid #E7E7E7;
+}
+
+div.ql-toolbar.ql-snow {
+    border: 2px solid #E7E7E7;
+
+    border-radius: 1rem 1rem 0rem 0rem;
+}
+
+.ql-editor .ql-blank {
+    border: 2px solid #33ff00;
+}
