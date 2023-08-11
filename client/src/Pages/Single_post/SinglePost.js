@@ -60,16 +60,6 @@ export const SinglePost = () => {
           src={`http://localhost:4000/${postInfo.cover}`}
           alt="cover"
         />
-        {userInfo?.id === postInfo.author._id && (
-          <Link to={`/edit/${postInfo._id}`}>
-            {" "}
-            <img
-              className="single_post_edit_btn"
-              src={pencil}
-              alt="pencil icon"
-            />
-          </Link>
-        )}
         <h3>{"@" + postInfo.author.username}</h3>
         <time className="">
           {format(new Date(postInfo.createdAt), "MMM d yyyy, HH:MM")}
@@ -78,6 +68,20 @@ export const SinglePost = () => {
       </div>
       <section className="single_post_content">
         <div dangerouslySetInnerHTML={{ __html: postInfo.content }}></div>
+      </section>
+      <section className="single_post_edit_btn_container">
+        {userInfo?.id === postInfo.author._id && (
+          <Link to={`/edit/${postInfo._id}`}>
+            <button className="single_post_edit_btn">
+              <h3 className="single_post_edit_btn_h3">Edit</h3>
+              <img
+                className="single_post_edit_btn_icon"
+                src={pencil}
+                alt="pencil icon"
+              />
+            </button>
+          </Link>
+        )}
       </section>
     </motion.section>
   );
